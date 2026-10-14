@@ -1,51 +1,73 @@
-# Lab 5: Static Code Analysis — Employee Payroll System
+# Lab 5: Static Code Analysis
 
-**Your file:** `employee_payroll_system.py`
+## Overview
+This project demonstrates static code analysis of a Python employee payroll system using Pylint, Bandit, and Flake8. The objective is to improve code quality, security, readability, and maintainability by identifying and fixing common programming issues.
 
-Follow the lab handout for the full instructions.
+## Tools Used
+- **Pylint** — Checks code quality, programming practices, and potential errors.
+- **Bandit** — Detects common security vulnerabilities in Python code.
+- **Flake8** — Checks Python style and coding-standard violations.
 
-## About the program
+## Project Structure
+```text
+L5_44_employee_payroll_system/
+├── employee_payroll_system.py
+├── pylint_report.txt
+├── bandit_report.txt
+├── flake8_report.txt
+├── issues.md
+├── reflection.md
+├── payroll_sheet.txt
+├── README.md
+└── .gitignore
+```
 
-An employee salary and payroll manager. It logs bonuses, deducts disciplinary penalties, checks eligibility thresholds, computes net disbursements, and exports payroll summaries.
+## Issues Addressed
+- Replaced mutable default arguments with safer initialization.
+- Removed unsafe use of `eval()`.
+- Replaced MD5 hashing with SHA-256.
+- Used the `secrets` module for secure token generation.
+- Removed unsafe shell command execution.
+- Improved exception handling and input validation.
+- Removed unused imports and variables.
+- Added docstrings and improved naming conventions.
+- Improved file handling by specifying UTF-8 encoding and using a context manager.
 
-The code works, but only just. It has quality, style and security problems of the kind Pylint, Flake8 and Bandit are built to find.
+## Static Analysis Results
 
-## What to do
+| Tool | Result |
+|---|---|
+| Pylint | 10.00/10 |
+| Bandit | No issues identified |
+| Flake8 | No violations reported |
 
-1. **Run it first** and read the output carefully:
-   ```bash
-   python employee_payroll_system.py
-   ```
-   It asks one question. Press Enter to use the default, then try a few inputs of your own. Not every problem in this file is something a tool will flag, so pay attention to output that looks wrong.
+## How to Run
 
-2. **Install the tools:**
-   ```bash
-   pip install pylint bandit flake8
-   ```
+Create and activate a virtual environment, then install the tools:
 
-3. **Run the analysis** and save the reports:
-   ```bash
-   pylint employee_payroll_system.py > pylint_report.txt
-   bandit -r employee_payroll_system.py > bandit_report.txt
-   flake8 employee_payroll_system.py > flake8_report.txt
-   ```
+```bash
+python -m venv venv
+pip install pylint bandit flake8
+```
 
-4. **Document the issues** in `issues.md` using this table (at least 4 rows, high and medium severity first):
+Run the program:
 
-   | Issue | Type | Line(s) | Description | Fix Approach |
-   |-------|------|---------|-------------|--------------|
-   | ... | ... | ... | ... | ... |
+```bash
+python employee_payroll_system.py
+```
 
-5. **Fix the code.** Fix at least 4 of the issues you documented, then rerun all three tools to confirm they are gone. Repeat until you are satisfied. The program should still do its job when you are done.
+Run the static analysis tools:
 
-6. **Reflect.** Answer the four reflection questions from the handout in `reflection.md`.
+```bash
+pylint employee_payroll_system.py > pylint_report.txt 2>&1
+bandit -r employee_payroll_system.py > bandit_report.txt 2>&1
+flake8 employee_payroll_system.py > flake8_report.txt 2>&1
+```
 
-## Deliverables
+## Documentation
+- `issues.md` — Documents the identified issues and their fixes.
+- `reflection.md` — Contains reflections on static code analysis.
+- The three report files contain the outputs from the analysis tools.
 
-1. `employee_payroll_system.py`: your cleaned version, with at least 4 issues fixed.
-2. `issues.md`: the completed issue table.
-3. `reflection.md`: your answers to the reflection questions.
-
-**Target:** aim for a Pylint score above 9.5 on your final file. A perfect 10.00/10 is very good.
-
-Be ready to explain the bugs you found and how you fixed them. You may be called on to present.
+## Conclusion
+Static code analysis helped improve the employee payroll system's code quality, maintainability, and security. The updated code achieved a Pylint score of 10/10, with no issues reported by Bandit and no violations reported by Flake8 in the final analysis.
